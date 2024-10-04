@@ -6,6 +6,7 @@
 
         <div class="card">
             <div class="card-body">
+                <img src="{{ asset('storage/' . $cliente->img) }}" alt="">
                 <h3 class="card-title">{{ $cliente->nome }} {{ $cliente->cognome }}</h3>
                 <p class="card-text"><strong>Cellulare:</strong> {{ $cliente->cellulare }}</p>
                 <p class="card-text"><strong>Email:</strong> {{ $cliente->email }}</p>

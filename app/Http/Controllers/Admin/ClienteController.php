@@ -37,7 +37,11 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        // Controlla se il cliente con quel nome e cognome esiste
+
+
+        // Validazione dei dati
+        $request->validate([
             'img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'nome' => 'required|string|max:255',
             'cognome' => 'required|string|max:255',
@@ -67,7 +71,21 @@ class ClienteController extends Controller
             'polpaccio_sx' => 'required|numeric',
         ]);
 
-        Cliente::create($validated);
+
+        // Aggiunge i campi creati e aggiornati dall'utente corrente
+        $data = $request->all();
+        $data['user_id'] = auth()->user()->id;
+        $data['created_at'] = now();
+        $data['updated_at'] = now();
+
+        // Crea un nuovo cliente con i dati validati
+        $cliente = new Cliente($data);
+        $cliente->save();
+
+        // Crea un nuovo cliente con i dati validati
+        $path = $request->file('img')->store('images', 'public');
+        $cliente->img = $path;
+        $cliente->save();
 
         return redirect()->route('admin.clientes.index')->with('success', 'Cliente creato con successo!');
     }
@@ -94,8 +112,9 @@ class ClienteController extends Controller
      */
     public function update(Request $request, Cliente $cliente)
     {
+        // Rendi opzionale l'immagine durante l'update
         $validated = $request->validate([
-            'img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'nome' => 'required|string|max:255',
             'cognome' => 'required|string|max:255',
             'cellulare' => 'required|string|max:255',
@@ -124,10 +143,18 @@ class ClienteController extends Controller
             'polpaccio_sx' => 'required|numeric',
         ]);
 
+        // Se c'è un file img caricato, aggiorna l'immagine
+        if ($request->hasFile('img')) {
+            $path = $request->file('img')->store('images', 'public');
+            $cliente->img = $path;
+        }
+
+        // Aggiorna gli altri campi
         $cliente->update($validated);
 
-        return redirect()->route('admin.clientes.index')->with('success', 'Cliente aggiornato con successo!');
+        return redirect()->route('admin.clientes.index')->with('success', 'Cliente aggiornato con successo.');
     }
+
 
     /**
      * Remove the specified resource from storage.

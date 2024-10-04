@@ -128,10 +128,171 @@
                 @enderror
             </div>
 
-            <!-- Altri campi (testa, collo, spalle, ecc.) -->
-            <!-- Ripetere la struttura per tutti i campi come massa magra, massa grassa, ecc., seguendo la logica di old('campo', $cliente->campo) -->
+            <!-- Testa -->
+            <div class="form-group">
+                <label for="testa">Testa</label>
+                <input type="number" name="testa" class="form-control @error('testa') is-invalid @enderror"
+                    id="testa" value="{{ old('testa', $cliente->testa) }}" required>
+                @error('testa')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
 
-            <!-- Pulsanti di invio -->
+            <!-- Collo -->
+            <div class="form-group">
+                <label for="collo">Collo</label>
+                <input type="number" name="collo" class="form-control @error('collo') is-invalid @enderror"
+                    id="collo" value="{{ old('collo', $cliente->collo) }}" required>
+                @error('collo')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <!-- Spalle -->
+            <div class="form-group">
+                <label for="spalle">Spalle</label>
+                <input type="number" name="spalle" class="form-control @error('spalle') is-invalid @enderror"
+                    id="spalle" value="{{ old('spalle', $cliente->spalle) }}" required>
+                @error('spalle')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <!-- Petto -->
+            <div class="form-group">
+                <label for="petto">Petto</label>
+                <input type="number" name="petto" class="form-control @error('petto') is-invalid @enderror"
+                    id="petto" value="{{ old('petto', $cliente->petto) }}" required>
+                @error('petto')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <!-- Bicipite destro -->
+            <div class="form-group">
+                <label for="bicipite_dx">Bicipite Destro</label>
+                <input type="number" name="bicipite_dx" class="form-control @error('bicipite_dx') is-invalid @enderror"
+                    id="bicipite_dx" value="{{ old('bicipite_dx', $cliente->bicipite_dx) }}" required>
+                @error('bicipite_dx')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <!-- Bicipite sinistro -->
+            <div class="form-group">
+                <label for="bicipite_sx">Bicipite Sinistro</label>
+                <input type="number" name="bicipite_sx" class="form-control @error('bicipite_sx') is-invalid @enderror"
+                    id="bicipite_sx" value="{{ old('bicipite_sx', $cliente->bicipite_sx) }}" required>
+                @error('bicipite_sx')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <!-- Avambraccio destro -->
+            <div class="form-group">
+                <label for="avambraccio_dx">Avambraccio Destro</label>
+                <input type="number" name="avambraccio_dx"
+                    class="form-control @error('avambraccio_dx') is-invalid @enderror" id="avambraccio_dx"
+                    value="{{ old('avambraccio_dx', $cliente->avambraccio_dx) }}" required>
+                @error('avambraccio_dx')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <!-- Avambraccio sinistro -->
+            <div class="form-group">
+                <label for="avambraccio_sx">Avambraccio Sinistro</label>
+                <input type="number" name="avambraccio_sx"
+                    class="form-control @error('avambraccio_sx') is-invalid @enderror" id="avambraccio_sx"
+                    value="{{ old('avambraccio_sx', $cliente->avambraccio_sx) }}" required>
+                @error('avambraccio_sx')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <!-- Polso destro -->
+            <div class="form-group">
+                <label for="polso_dx">Polso Destro</label>
+                <input type="number" name="polso_dx" class="form-control @error('polso_dx') is-invalid @enderror"
+                    id="polso_dx" value="{{ old('polso_dx', $cliente->polso_dx) }}" required>
+                @error('polso_dx')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <!-- Polso sinistro -->
+            <div class="form-group">
+                <label for="polso_sx">Polso Sinistro</label>
+                <input type="number" name="polso_sx" class="form-control @error('polso_sx') is-invalid @enderror"
+                    id="polso_sx" value="{{ old('polso_sx', $cliente->polso_sx) }}" required>
+                @error('polso_sx')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <!-- Vita -->
+            <div class="form-group">
+                <label for="vita">Vita</label>
+                <input type="number" name="vita" class="form-control @error('vita') is-invalid @enderror"
+                    id="vita" value="{{ old('vita', $cliente->vita) }}" required>
+                @error('vita')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <!-- Fianchi -->
+            <div class="form-group">
+                <label for="fianchi">Fianchi</label>
+                <input type="number" name="fianchi" class="form-control @error('fianchi') is-invalid @enderror"
+                    id="fianchi" value="{{ old('fianchi', $cliente->fianchi) }}" required>
+                @error('fianchi')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <!-- Coscia destra -->
+            <div class="form-group">
+                <label for="coscia_dx">Coscia Destra</label>
+                <input type="number" name="coscia_dx" class="form-control @error('coscia_dx') is-invalid @enderror"
+                    id="coscia_dx" value="{{ old('coscia_dx', $cliente->coscia_dx) }}" required>
+                @error('coscia_dx')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <!-- Coscia sinistra -->
+            <div class="form-group">
+                <label for="coscia_sx">Coscia Sinistra</label>
+                <input type="number" name="coscia_sx" class="form-control @error('coscia_sx') is-invalid @enderror"
+                    id="coscia_sx" value="{{ old('coscia_sx', $cliente->coscia_sx) }}" required>
+                @error('coscia_sx')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <!-- Polpaccio destro -->
+            <div class="form-group">
+                <label for="polpaccio_dx">Polpaccio Destro</label>
+                <input type="number" name="polpaccio_dx"
+                    class="form-control @error('polpaccio_dx') is-invalid @enderror" id="polpaccio_dx"
+                    value="{{ old('polpaccio_dx', $cliente->polpaccio_dx) }}" required>
+                @error('polpaccio_dx')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <!-- Polpaccio sinistro -->
+            <div class="form-group">
+                <label for="polpaccio_sx">Polpaccio Sinistro</label>
+                <input type="number" name="polpaccio_sx"
+                    class="form-control @error('polpaccio_sx') is-invalid @enderror" id="polpaccio_sx"
+                    value="{{ old('polpaccio_sx', $cliente->polpaccio_sx) }}" required>
+                @error('polpaccio_sx')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <!-- Submit -->
             <button type="submit" class="btn btn-primary">Aggiorna Cliente</button>
         </form>
     </div>

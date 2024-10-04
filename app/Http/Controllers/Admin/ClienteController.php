@@ -15,8 +15,14 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        // Recupera tutti i clienti
-        $clientes = Cliente::all();
+        // Recupera i clienti solo per l'utente loggato
+        $clientes = Cliente::where('user_id', auth()->id())->get();
+
+        // Controlla se ci sono clienti e passa un messaggio se non ci sono
+        if ($clientes->isEmpty()) {
+            // Passa il messaggio alla vista e passa i clienti
+            return view('admin.clientes.index')->with('message', 'Non hai clienti associati.');
+        }
 
         // Passa i clienti alla vista
         return view('admin.clientes.index', compact('clientes'));
@@ -80,6 +86,7 @@ class ClienteController extends Controller
 
         // Crea un nuovo cliente con i dati validati
         $cliente = new Cliente($data);
+        $cliente->user_id = auth()->user()->id;
         $cliente->save();
 
         // Crea un nuovo cliente con i dati validati

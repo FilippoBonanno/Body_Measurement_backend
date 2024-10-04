@@ -52,6 +52,14 @@
                             </li>
 
                             <li class="nav-item">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.clientes.create' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.clientes.create') }}"><i
+                                        class="fa-solid fa-file-invoice fa-lg fa-fw"></i> {{ __('Nuovo Cliente') }}</a>
+                            </li>
+
+
+
+                            <li class="nav-item">
                                 <a class="nav-link text-white" href="{{ route('logout') }}"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     <i class="fa-solid fa-sign-out-alt fa-lg fa-fw"></i> {{ __('Logout') }}

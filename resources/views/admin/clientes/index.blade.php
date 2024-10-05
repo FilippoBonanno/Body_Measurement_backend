@@ -18,31 +18,34 @@
                 </tr>
             </thead>
             <tbody>
-
-
-                @foreach ($clientes as $cliente)
-                    <tr>
-                        <td>{{ $cliente->nome }}</td>
-                        <td>{{ $cliente->cognome }}</td>
-                        <td>{{ $cliente->cellulare }}</td>
-                        <td>{{ $cliente->email }}</td>
-                        <td>{{ $cliente->eta }}</td>
-                        <td>{{ $cliente->peso }}</td>
-                        <td>
-                            <a href="{{ route('admin.clientes.show', $cliente->id) }}" class="btn btn-info">Visualizza</a>
-                            <a href="{{ route('admin.clientes.edit', $cliente->id) }}" class="btn btn-warning">Modifica</a>
-                            <form action="{{ route('admin.clientes.destroy', $cliente->id) }}" method="POST"
-                                style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger"
-                                    onclick="return confirm('Sei sicuro di voler eliminare questo cliente?')">Elimina</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
+                @if (Auth::user()->clientes->isNotEmpty())
+                    @foreach ($clientes as $cliente)
+                        <tr>
+                            <td>{{ $cliente->nome }}</td>
+                            <td>{{ $cliente->cognome }}</td>
+                            <td>{{ $cliente->cellulare }}</td>
+                            <td>{{ $cliente->email }}</td>
+                            <td>{{ $cliente->eta }}</td>
+                            <td>{{ $cliente->peso }}</td>
+                            <td>
+                                <a href="{{ route('admin.clientes.show', $cliente->id) }}" class="btn btn-info">Visualizza</a>
+                                <a href="{{ route('admin.clientes.edit', $cliente->id) }}"
+                                    class="btn btn-warning">Modifica</a>
+                                <form action="{{ route('admin.clientes.destroy', $cliente->id) }}" method="POST"
+                                    style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger"
+                                        onclick="return confirm('Sei sicuro di voler eliminare questo cliente?')">Elimina</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
 
             </tbody>
         </table>
+    @else
+        <div>Non ci sono clienti</div>
+        @endif
     </div>
 @endsection
